@@ -1,0 +1,13 @@
+﻿id,name_ko,slot_id,file,x,y,width,height,game_x,game_y,game_width,game_height
+workshop,작업대,S01,buildings/master/workshop.png,587,115,219,176,168.517,32.997,62.871,50.499
+strategy_tent,작전 회의 천막,S02,buildings/master/strategy_tent.png,860,78,253,205,246.89,22.38,72.632,58.82
+archive,기록보관소,S03,buildings/master/archive.png,1138,101,225,184,326.699,28.98,64.593,52.795
+blacksmith,대장간,S04,buildings/master/blacksmith.png,177,358,249,204,50.813,102.721,71.483,58.533
+alchemy_lab,연금술 공방,S05,buildings/master/alchemy_lab.png,1064,360,269,208,305.455,103.294,77.225,59.681
+storage,창고,S06,buildings/master/storage.png,152,610,237,202,43.636,175.027,68.038,57.96
+trading_post,교역소,S07,buildings/master/trading_post.png,455,630,212,170,130.622,180.765,60.861,48.778
+adventurers_guild,모험가 길드,S08,buildings/master/adventurers_guild.png,785,610,245,207,225.359,175.027,70.335,59.394
+herb_garden,약초밭,S09,buildings/master/herb_garden.png,1178,645,205,169,338.182,185.069,58.852,48.491
+teleport_portal,전송장치,S10,buildings/master/teleport_portal.png,682,365,156,170,195.789,104.729,44.785,48.778
+kitchen,취사장,S10,buildings/master/kitchen.png,660,370,200,168,189.474,106.164,57.416,48.204
+fishing_dock,낚시터,S11,buildings/master/fishing_dock_river_overlay.png,1385,598,277,256,397.608,171.583,79.522,73.454

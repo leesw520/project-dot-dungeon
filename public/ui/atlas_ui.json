@@ -1,0 +1,607 @@
+{
+  "image": "atlas_ui.png",
+  "width": 512,
+  "height": 512,
+  "sprites": {
+    "UI-01_frame_basic": {
+      "x": 2,
+      "y": 2,
+      "w": 48,
+      "h": 48,
+      "nine_slice": {
+        "left": 9,
+        "top": 9,
+        "right": 9,
+        "bottom": 9
+      }
+    },
+    "UI-02_frame_emphasis": {
+      "x": 52,
+      "y": 2,
+      "w": 48,
+      "h": 48,
+      "nine_slice": {
+        "left": 9,
+        "top": 9,
+        "right": 9,
+        "bottom": 9
+      }
+    },
+    "UI-03_frame_info": {
+      "x": 102,
+      "y": 2,
+      "w": 48,
+      "h": 48,
+      "nine_slice": {
+        "left": 9,
+        "top": 9,
+        "right": 9,
+        "bottom": 9
+      }
+    },
+    "UI-04_frame_tooltip": {
+      "x": 152,
+      "y": 2,
+      "w": 48,
+      "h": 48,
+      "nine_slice": {
+        "left": 9,
+        "top": 9,
+        "right": 9,
+        "bottom": 9
+      }
+    },
+    "UI-05_button_normal": {
+      "x": 202,
+      "y": 2,
+      "w": 56,
+      "h": 18,
+      "nine_slice": {
+        "left": 7,
+        "top": 5,
+        "right": 7,
+        "bottom": 5
+      }
+    },
+    "UI-05_button_hover": {
+      "x": 260,
+      "y": 2,
+      "w": 56,
+      "h": 18,
+      "nine_slice": {
+        "left": 7,
+        "top": 5,
+        "right": 7,
+        "bottom": 5
+      }
+    },
+    "UI-05_button_selected": {
+      "x": 318,
+      "y": 2,
+      "w": 56,
+      "h": 18,
+      "nine_slice": {
+        "left": 7,
+        "top": 5,
+        "right": 7,
+        "bottom": 5
+      }
+    },
+    "UI-05_button_disabled": {
+      "x": 376,
+      "y": 2,
+      "w": 56,
+      "h": 18,
+      "nine_slice": {
+        "left": 7,
+        "top": 5,
+        "right": 7,
+        "bottom": 5
+      }
+    },
+    "UI-05_button_confirm": {
+      "x": 434,
+      "y": 2,
+      "w": 56,
+      "h": 18,
+      "nine_slice": {
+        "left": 7,
+        "top": 5,
+        "right": 7,
+        "bottom": 5
+      }
+    },
+    "UI-05_button_danger": {
+      "x": 2,
+      "y": 52,
+      "w": 56,
+      "h": 18,
+      "nine_slice": {
+        "left": 7,
+        "top": 5,
+        "right": 7,
+        "bottom": 5
+      }
+    },
+    "UI-06_tab_normal": {
+      "x": 60,
+      "y": 52,
+      "w": 48,
+      "h": 16,
+      "nine_slice": {
+        "left": 7,
+        "top": 5,
+        "right": 7,
+        "bottom": 4
+      }
+    },
+    "UI-06_tab_selected": {
+      "x": 110,
+      "y": 52,
+      "w": 48,
+      "h": 16,
+      "nine_slice": {
+        "left": 7,
+        "top": 5,
+        "right": 7,
+        "bottom": 4
+      }
+    },
+    "UI-07_slot_normal": {
+      "x": 160,
+      "y": 52,
+      "w": 20,
+      "h": 20
+    },
+    "UI-07_slot_selected": {
+      "x": 182,
+      "y": 52,
+      "w": 20,
+      "h": 20
+    },
+    "UI-07_slot_locked": {
+      "x": 204,
+      "y": 52,
+      "w": 20,
+      "h": 20
+    },
+    "UI-07_slot_disabled": {
+      "x": 226,
+      "y": 52,
+      "w": 20,
+      "h": 20
+    },
+    "UI-07_slot_invalid": {
+      "x": 248,
+      "y": 52,
+      "w": 20,
+      "h": 20
+    },
+    "UI-07_slot_rarity": {
+      "x": 270,
+      "y": 52,
+      "w": 20,
+      "h": 20
+    },
+    "UI-07_slot_add": {
+      "x": 292,
+      "y": 52,
+      "w": 20,
+      "h": 20
+    },
+    "UI-08_list_row_normal": {
+      "x": 314,
+      "y": 52,
+      "w": 96,
+      "h": 18,
+      "nine_slice": {
+        "left": 6,
+        "top": 3,
+        "right": 6,
+        "bottom": 3
+      }
+    },
+    "UI-08_list_row_hover": {
+      "x": 412,
+      "y": 52,
+      "w": 96,
+      "h": 18,
+      "nine_slice": {
+        "left": 6,
+        "top": 3,
+        "right": 6,
+        "bottom": 3
+      }
+    },
+    "UI-08_list_row_selected": {
+      "x": 2,
+      "y": 74,
+      "w": 96,
+      "h": 18,
+      "nine_slice": {
+        "left": 6,
+        "top": 3,
+        "right": 6,
+        "bottom": 3
+      }
+    },
+    "UI-08_list_row_disabled": {
+      "x": 100,
+      "y": 74,
+      "w": 96,
+      "h": 18,
+      "nine_slice": {
+        "left": 6,
+        "top": 3,
+        "right": 6,
+        "bottom": 3
+      }
+    },
+    "UI-09_hp_track": {
+      "x": 198,
+      "y": 74,
+      "w": 80,
+      "h": 9,
+      "nine_slice": {
+        "left": 4,
+        "top": 3,
+        "right": 4,
+        "bottom": 3
+      }
+    },
+    "UI-09_hp_fill": {
+      "x": 280,
+      "y": 74,
+      "w": 16,
+      "h": 5
+    },
+    "UI-09_mp_track": {
+      "x": 298,
+      "y": 74,
+      "w": 80,
+      "h": 9,
+      "nine_slice": {
+        "left": 4,
+        "top": 3,
+        "right": 4,
+        "bottom": 3
+      }
+    },
+    "UI-09_mp_fill": {
+      "x": 380,
+      "y": 74,
+      "w": 16,
+      "h": 5
+    },
+    "UI-09_tp_track": {
+      "x": 398,
+      "y": 74,
+      "w": 80,
+      "h": 9,
+      "nine_slice": {
+        "left": 4,
+        "top": 3,
+        "right": 4,
+        "bottom": 3
+      }
+    },
+    "UI-09_tp_fill": {
+      "x": 480,
+      "y": 74,
+      "w": 16,
+      "h": 5
+    },
+    "UI-09_exp_track": {
+      "x": 2,
+      "y": 94,
+      "w": 80,
+      "h": 9,
+      "nine_slice": {
+        "left": 4,
+        "top": 3,
+        "right": 4,
+        "bottom": 3
+      }
+    },
+    "UI-09_exp_fill": {
+      "x": 84,
+      "y": 94,
+      "w": 16,
+      "h": 5
+    },
+    "UI-09_hp_pip_full": {
+      "x": 102,
+      "y": 94,
+      "w": 7,
+      "h": 6
+    },
+    "UI-09_hp_pip_empty": {
+      "x": 111,
+      "y": 94,
+      "w": 7,
+      "h": 6
+    },
+    "UI-09_tp_pip_full": {
+      "x": 120,
+      "y": 94,
+      "w": 7,
+      "h": 6
+    },
+    "UI-09_tp_pip_empty": {
+      "x": 129,
+      "y": 94,
+      "w": 7,
+      "h": 6
+    },
+    "UI-10_title_wood": {
+      "x": 138,
+      "y": 94,
+      "w": 128,
+      "h": 17,
+      "nine_slice": {
+        "left": 4,
+        "top": 3,
+        "right": 4,
+        "bottom": 3
+      }
+    },
+    "UI-10_title_navy": {
+      "x": 268,
+      "y": 94,
+      "w": 128,
+      "h": 17,
+      "nine_slice": {
+        "left": 4,
+        "top": 3,
+        "right": 4,
+        "bottom": 3
+      }
+    },
+    "UI-10_divider_horizontal": {
+      "x": 398,
+      "y": 94,
+      "w": 32,
+      "h": 3
+    },
+    "UI-10_divider_vertical": {
+      "x": 432,
+      "y": 94,
+      "w": 3,
+      "h": 32
+    },
+    "UI-11_icon_back": {
+      "x": 437,
+      "y": 94,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_close": {
+      "x": 455,
+      "y": 94,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_rotate": {
+      "x": 473,
+      "y": 94,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_flip": {
+      "x": 491,
+      "y": 94,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_sort": {
+      "x": 2,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_filter": {
+      "x": 20,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_settings": {
+      "x": 38,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_search": {
+      "x": 56,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_up": {
+      "x": 74,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_down": {
+      "x": 92,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_plus": {
+      "x": 110,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_minus": {
+      "x": 128,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_check": {
+      "x": 146,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_warning": {
+      "x": 164,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_info": {
+      "x": 182,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_lock": {
+      "x": 200,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_expand": {
+      "x": 218,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_arrow_right": {
+      "x": 236,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_sword": {
+      "x": 254,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_shield": {
+      "x": 272,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_spark": {
+      "x": 290,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-11_icon_hourglass": {
+      "x": 308,
+      "y": 128,
+      "w": 16,
+      "h": 16
+    },
+    "UI-12_popup_confirmation": {
+      "x": 326,
+      "y": 128,
+      "w": 48,
+      "h": 48,
+      "nine_slice": {
+        "left": 9,
+        "top": 9,
+        "right": 9,
+        "bottom": 9
+      }
+    },
+    "UI-12_popup_warning": {
+      "x": 376,
+      "y": 128,
+      "w": 48,
+      "h": 48,
+      "nine_slice": {
+        "left": 9,
+        "top": 9,
+        "right": 9,
+        "bottom": 9
+      }
+    },
+    "UI-12_popup_information": {
+      "x": 426,
+      "y": 128,
+      "w": 48,
+      "h": 48,
+      "nine_slice": {
+        "left": 9,
+        "top": 9,
+        "right": 9,
+        "bottom": 9
+      }
+    },
+    "UI-13_banner_victory": {
+      "x": 2,
+      "y": 178,
+      "w": 144,
+      "h": 28,
+      "nine_slice": {
+        "left": 18,
+        "top": 8,
+        "right": 18,
+        "bottom": 8
+      }
+    },
+    "UI-13_banner_craft": {
+      "x": 148,
+      "y": 178,
+      "w": 144,
+      "h": 28,
+      "nine_slice": {
+        "left": 18,
+        "top": 8,
+        "right": 18,
+        "bottom": 8
+      }
+    },
+    "UI-13_banner_level_up": {
+      "x": 294,
+      "y": 178,
+      "w": 144,
+      "h": 28,
+      "nine_slice": {
+        "left": 18,
+        "top": 8,
+        "right": 18,
+        "bottom": 8
+      }
+    },
+    "UI-14_ornament_gold_corner": {
+      "x": 440,
+      "y": 178,
+      "w": 16,
+      "h": 16
+    },
+    "UI-14_ornament_wood_chip": {
+      "x": 458,
+      "y": 178,
+      "w": 16,
+      "h": 16
+    },
+    "UI-14_ornament_blue_corner": {
+      "x": 476,
+      "y": 178,
+      "w": 16,
+      "h": 16
+    },
+    "UI-14_ornament_teal_corner": {
+      "x": 494,
+      "y": 178,
+      "w": 16,
+      "h": 16
+    },
+    "UI-14_ornament_dust": {
+      "x": 2,
+      "y": 208,
+      "w": 16,
+      "h": 16
+    }
+  }
+}

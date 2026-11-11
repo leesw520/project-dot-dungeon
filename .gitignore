@@ -1,0 +1,15 @@
+node_modules
+dist
+.env
+*.local
+.claude/settings.local.json
+__pycache__/
+*.log
+.DS_Store
+Thumbs.db
+
+# 비공개 자료 (release 옆 private 폴더로 연결된 폴더, 저장소에 올리지 않는다)
+/docs
+/reference
+/tools
+/CLAUDE.md

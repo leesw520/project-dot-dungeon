@@ -1,0 +1,721 @@
+{
+  "version": "0.3.0",
+  "description": "고정 배경 위 투명 PNG만 합성해 생성한 허브. 건설 전후 배경 픽셀 동일",
+  "coordinate_system": "top-left, pixels; native coordinates authoritative",
+  "canvas": {
+    "native": [
+      1672,
+      941
+    ],
+    "game": [
+      480,
+      270
+    ],
+    "scale_native_to_game": [
+      0.28708133971291866,
+      0.2869287991498406
+    ]
+  },
+  "background": {
+    "native": "background/hub_empty_1672x941.png",
+    "game": "background/hub_empty_480x270.png",
+    "contains_static_dungeon_gate": true
+  },
+  "logical_grid": {
+    "columns": 7,
+    "rows": 5,
+    "note": "실제 빈 배경에 그려진 물리 부지는 11개. logical_cell은 대표 인덱스이며 전체 35칸이 아닙니다."
+  },
+  "plots": [
+    {
+      "id": "S01",
+      "title": "북서 흙터",
+      "bbox": [
+        571,
+        105,
+        813,
+        291
+      ],
+      "kind": "land",
+      "default": "workshop",
+      "logical_cell": [
+        2,
+        0
+      ],
+      "game_bbox": [
+        163.92,
+        30.13,
+        233.4,
+        83.5
+      ],
+      "center": [
+        692,
+        198
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "북쪽 목재 받침",
+      "bbox": [
+        884,
+        69,
+        1104,
+        287
+      ],
+      "kind": "wood_deck",
+      "default": "strategy_tent",
+      "logical_cell": [
+        4,
+        0
+      ],
+      "game_bbox": [
+        253.78,
+        19.8,
+        316.94,
+        82.35
+      ],
+      "center": [
+        994,
+        178
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "북동 흙터",
+      "bbox": [
+        1125,
+        94,
+        1376,
+        291
+      ],
+      "kind": "land",
+      "default": "archive",
+      "logical_cell": [
+        5,
+        0
+      ],
+      "game_bbox": [
+        322.97,
+        26.97,
+        395.02,
+        83.5
+      ],
+      "center": [
+        1250,
+        192
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "서쪽 흙터",
+      "bbox": [
+        159,
+        375,
+        443,
+        565
+      ],
+      "kind": "land",
+      "default": "blacksmith",
+      "logical_cell": [
+        0,
+        2
+      ],
+      "game_bbox": [
+        45.65,
+        107.6,
+        127.18,
+        162.11
+      ],
+      "center": [
+        301,
+        470
+      ]
+    },
+    {
+      "id": "S05",
+      "title": "동쪽 흙터",
+      "bbox": [
+        1025,
+        378,
+        1377,
+        571
+      ],
+      "kind": "land",
+      "default": "alchemy_lab",
+      "logical_cell": [
+        5,
+        2
+      ],
+      "game_bbox": [
+        294.26,
+        108.46,
+        395.31,
+        163.84
+      ],
+      "center": [
+        1201,
+        474
+      ]
+    },
+    {
+      "id": "S06",
+      "title": "남서 흙터",
+      "bbox": [
+        150,
+        632,
+        395,
+        815
+      ],
+      "kind": "land",
+      "default": "storage",
+      "logical_cell": [
+        0,
+        4
+      ],
+      "game_bbox": [
+        43.06,
+        181.34,
+        113.4,
+        233.85
+      ],
+      "center": [
+        272,
+        724
+      ]
+    },
+    {
+      "id": "S07",
+      "title": "남쪽 목재 받침",
+      "bbox": [
+        450,
+        650,
+        671,
+        802
+      ],
+      "kind": "wood_deck",
+      "default": "trading_post",
+      "logical_cell": [
+        2,
+        4
+      ],
+      "game_bbox": [
+        129.19,
+        186.5,
+        192.63,
+        230.12
+      ],
+      "center": [
+        560,
+        726
+      ]
+    },
+    {
+      "id": "S08",
+      "title": "남중앙 흙터",
+      "bbox": [
+        780,
+        629,
+        1037,
+        815
+      ],
+      "kind": "land",
+      "default": "adventurers_guild",
+      "logical_cell": [
+        4,
+        4
+      ],
+      "game_bbox": [
+        223.92,
+        180.48,
+        297.7,
+        233.85
+      ],
+      "center": [
+        908,
+        722
+      ]
+    },
+    {
+      "id": "S09",
+      "title": "남동 흙터",
+      "bbox": [
+        1155,
+        630,
+        1393,
+        815
+      ],
+      "kind": "land",
+      "default": "herb_garden",
+      "logical_cell": [
+        5,
+        4
+      ],
+      "game_bbox": [
+        331.58,
+        180.77,
+        399.9,
+        233.85
+      ],
+      "center": [
+        1274,
+        722
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "중앙 광장 특수 부지",
+      "bbox": [
+        633,
+        393,
+        867,
+        543
+      ],
+      "kind": "plaza",
+      "default": "teleport_portal",
+      "logical_cell": [
+        3,
+        2
+      ],
+      "game_bbox": [
+        181.72,
+        112.76,
+        248.9,
+        155.8
+      ],
+      "center": [
+        750,
+        468
+      ]
+    },
+    {
+      "id": "S11",
+      "title": "동남 강변 낚시터",
+      "bbox": [
+        1378,
+        603,
+        1666,
+        865
+      ],
+      "kind": "riverbank",
+      "default": "fishing_dock",
+      "logical_cell": [
+        6,
+        4
+      ],
+      "game_bbox": [
+        395.6,
+        173.02,
+        478.28,
+        248.19
+      ],
+      "center": [
+        1522,
+        734
+      ]
+    }
+  ],
+  "buildings": {
+    "dungeon_gate": {
+      "id": "dungeon_gate",
+      "name_ko": "던전 게이트",
+      "master_file": "buildings/master/dungeon_gate.png",
+      "master_width": 315,
+      "master_height": 213,
+      "game_56x40_file": "buildings/game_56x40/dungeon_gate.png"
+    },
+    "workshop": {
+      "id": "workshop",
+      "name_ko": "작업대",
+      "master_file": "buildings/master/workshop.png",
+      "master_width": 212,
+      "master_height": 172,
+      "game_56x40_file": "buildings/game_56x40/workshop.png"
+    },
+    "storage": {
+      "id": "storage",
+      "name_ko": "창고",
+      "master_file": "buildings/master/storage.png",
+      "master_width": 200,
+      "master_height": 174,
+      "game_56x40_file": "buildings/game_56x40/storage.png"
+    },
+    "blacksmith": {
+      "id": "blacksmith",
+      "name_ko": "대장간",
+      "master_file": "buildings/master/blacksmith.png",
+      "master_width": 222,
+      "master_height": 219,
+      "game_56x40_file": "buildings/game_56x40/blacksmith.png"
+    },
+    "strategy_tent": {
+      "id": "strategy_tent",
+      "name_ko": "작전 회의 천막",
+      "master_file": "buildings/master/strategy_tent.png",
+      "master_width": 246,
+      "master_height": 209,
+      "game_56x40_file": "buildings/game_56x40/strategy_tent.png"
+    },
+    "alchemy_lab": {
+      "id": "alchemy_lab",
+      "name_ko": "연금술 공방",
+      "master_file": "buildings/master/alchemy_lab.png",
+      "master_width": 206,
+      "master_height": 200,
+      "game_56x40_file": "buildings/game_56x40/alchemy_lab.png"
+    },
+    "trading_post": {
+      "id": "trading_post",
+      "name_ko": "교역소",
+      "master_file": "buildings/master/trading_post.png",
+      "master_width": 197,
+      "master_height": 220,
+      "game_56x40_file": "buildings/game_56x40/trading_post.png"
+    },
+    "adventurers_guild": {
+      "id": "adventurers_guild",
+      "name_ko": "모험가 길드",
+      "master_file": "buildings/master/adventurers_guild.png",
+      "master_width": 195,
+      "master_height": 238,
+      "game_56x40_file": "buildings/game_56x40/adventurers_guild.png"
+    },
+    "archive": {
+      "id": "archive",
+      "name_ko": "기록보관소",
+      "master_file": "buildings/master/archive.png",
+      "master_width": 202,
+      "master_height": 209,
+      "game_56x40_file": "buildings/game_56x40/archive.png"
+    },
+    "herb_garden": {
+      "id": "herb_garden",
+      "name_ko": "약초밭",
+      "master_file": "buildings/master/herb_garden.png",
+      "master_width": 160,
+      "master_height": 206,
+      "game_56x40_file": "buildings/game_56x40/herb_garden.png"
+    },
+    "teleport_portal": {
+      "id": "teleport_portal",
+      "name_ko": "전송장치",
+      "master_file": "buildings/master/teleport_portal.png",
+      "master_width": 159,
+      "master_height": 220,
+      "game_56x40_file": "buildings/game_56x40/teleport_portal.png"
+    },
+    "kitchen": {
+      "id": "kitchen",
+      "name_ko": "취사장",
+      "master_file": "buildings/master/kitchen.png",
+      "master_width": 209,
+      "master_height": 265,
+      "game_56x40_file": "buildings/game_56x40/kitchen.png"
+    },
+    "fishing_dock": {
+      "id": "fishing_dock",
+      "name_ko": "낚시터",
+      "master_file": "buildings/master/fishing_dock.png",
+      "master_width": 323,
+      "master_height": 290,
+      "game_56x40_file": "buildings/game_56x40/fishing_dock.png",
+      "render_file": "buildings/master/fishing_dock_river_overlay.png",
+      "note": "기존 강물 타일을 가리지 않도록 물 색 부분을 제외한 부두 중심의 변형"
+    }
+  },
+  "placements": {
+    "workshop": {
+      "building_id": "workshop",
+      "name_ko": "작업대",
+      "slot_id": "S01",
+      "file": "buildings/master/workshop.png",
+      "x": 587,
+      "y": 115,
+      "width": 219,
+      "height": 176,
+      "game_x": 168.517,
+      "game_y": 32.997,
+      "game_width": 62.871,
+      "game_height": 50.499,
+      "anchor": {
+        "type": "top_left",
+        "x": 587,
+        "y": 115
+      },
+      "z_order": 291
+    },
+    "strategy_tent": {
+      "building_id": "strategy_tent",
+      "name_ko": "작전 회의 천막",
+      "slot_id": "S02",
+      "file": "buildings/master/strategy_tent.png",
+      "x": 860,
+      "y": 78,
+      "width": 253,
+      "height": 205,
+      "game_x": 246.89,
+      "game_y": 22.38,
+      "game_width": 72.632,
+      "game_height": 58.82,
+      "anchor": {
+        "type": "top_left",
+        "x": 860,
+        "y": 78
+      },
+      "z_order": 283
+    },
+    "archive": {
+      "building_id": "archive",
+      "name_ko": "기록보관소",
+      "slot_id": "S03",
+      "file": "buildings/master/archive.png",
+      "x": 1138,
+      "y": 101,
+      "width": 225,
+      "height": 184,
+      "game_x": 326.699,
+      "game_y": 28.98,
+      "game_width": 64.593,
+      "game_height": 52.795,
+      "anchor": {
+        "type": "top_left",
+        "x": 1138,
+        "y": 101
+      },
+      "z_order": 285
+    },
+    "blacksmith": {
+      "building_id": "blacksmith",
+      "name_ko": "대장간",
+      "slot_id": "S04",
+      "file": "buildings/master/blacksmith.png",
+      "x": 177,
+      "y": 358,
+      "width": 249,
+      "height": 204,
+      "game_x": 50.813,
+      "game_y": 102.721,
+      "game_width": 71.483,
+      "game_height": 58.533,
+      "anchor": {
+        "type": "top_left",
+        "x": 177,
+        "y": 358
+      },
+      "z_order": 562
+    },
+    "alchemy_lab": {
+      "building_id": "alchemy_lab",
+      "name_ko": "연금술 공방",
+      "slot_id": "S05",
+      "file": "buildings/master/alchemy_lab.png",
+      "x": 1064,
+      "y": 360,
+      "width": 269,
+      "height": 208,
+      "game_x": 305.455,
+      "game_y": 103.294,
+      "game_width": 77.225,
+      "game_height": 59.681,
+      "anchor": {
+        "type": "top_left",
+        "x": 1064,
+        "y": 360
+      },
+      "z_order": 568
+    },
+    "storage": {
+      "building_id": "storage",
+      "name_ko": "창고",
+      "slot_id": "S06",
+      "file": "buildings/master/storage.png",
+      "x": 152,
+      "y": 610,
+      "width": 237,
+      "height": 202,
+      "game_x": 43.636,
+      "game_y": 175.027,
+      "game_width": 68.038,
+      "game_height": 57.96,
+      "anchor": {
+        "type": "top_left",
+        "x": 152,
+        "y": 610
+      },
+      "z_order": 812
+    },
+    "trading_post": {
+      "building_id": "trading_post",
+      "name_ko": "교역소",
+      "slot_id": "S07",
+      "file": "buildings/master/trading_post.png",
+      "x": 455,
+      "y": 630,
+      "width": 212,
+      "height": 170,
+      "game_x": 130.622,
+      "game_y": 180.765,
+      "game_width": 60.861,
+      "game_height": 48.778,
+      "anchor": {
+        "type": "top_left",
+        "x": 455,
+        "y": 630
+      },
+      "z_order": 800
+    },
+    "adventurers_guild": {
+      "building_id": "adventurers_guild",
+      "name_ko": "모험가 길드",
+      "slot_id": "S08",
+      "file": "buildings/master/adventurers_guild.png",
+      "x": 785,
+      "y": 610,
+      "width": 245,
+      "height": 207,
+      "game_x": 225.359,
+      "game_y": 175.027,
+      "game_width": 70.335,
+      "game_height": 59.394,
+      "anchor": {
+        "type": "top_left",
+        "x": 785,
+        "y": 610
+      },
+      "z_order": 817
+    },
+    "herb_garden": {
+      "building_id": "herb_garden",
+      "name_ko": "약초밭",
+      "slot_id": "S09",
+      "file": "buildings/master/herb_garden.png",
+      "x": 1178,
+      "y": 645,
+      "width": 205,
+      "height": 169,
+      "game_x": 338.182,
+      "game_y": 185.069,
+      "game_width": 58.852,
+      "game_height": 48.491,
+      "anchor": {
+        "type": "top_left",
+        "x": 1178,
+        "y": 645
+      },
+      "z_order": 814
+    },
+    "teleport_portal": {
+      "building_id": "teleport_portal",
+      "name_ko": "전송장치",
+      "slot_id": "S10",
+      "file": "buildings/master/teleport_portal.png",
+      "x": 682,
+      "y": 365,
+      "width": 156,
+      "height": 170,
+      "game_x": 195.789,
+      "game_y": 104.729,
+      "game_width": 44.785,
+      "game_height": 48.778,
+      "anchor": {
+        "type": "top_left",
+        "x": 682,
+        "y": 365
+      },
+      "z_order": 535
+    },
+    "kitchen": {
+      "building_id": "kitchen",
+      "name_ko": "취사장",
+      "slot_id": "S10",
+      "file": "buildings/master/kitchen.png",
+      "x": 660,
+      "y": 370,
+      "width": 200,
+      "height": 168,
+      "game_x": 189.474,
+      "game_y": 106.164,
+      "game_width": 57.416,
+      "game_height": 48.204,
+      "anchor": {
+        "type": "top_left",
+        "x": 660,
+        "y": 370
+      },
+      "z_order": 538
+    },
+    "fishing_dock": {
+      "building_id": "fishing_dock",
+      "name_ko": "낚시터",
+      "slot_id": "S11",
+      "file": "buildings/master/fishing_dock_river_overlay.png",
+      "x": 1385,
+      "y": 598,
+      "width": 277,
+      "height": 256,
+      "game_x": 397.608,
+      "game_y": 171.583,
+      "game_width": 79.522,
+      "game_height": 73.454,
+      "anchor": {
+        "type": "top_left",
+        "x": 1385,
+        "y": 598
+      },
+      "z_order": 854
+    }
+  },
+  "scenarios": {
+    "initial": {
+      "label": "초기 임시 거점",
+      "buildings": [
+        "workshop",
+        "storage",
+        "kitchen"
+      ],
+      "markers": true
+    },
+    "developed": {
+      "label": "확장된 전초기지",
+      "buildings": [
+        "workshop",
+        "strategy_tent",
+        "archive",
+        "blacksmith",
+        "alchemy_lab",
+        "storage",
+        "trading_post",
+        "adventurers_guild",
+        "herb_garden",
+        "teleport_portal",
+        "fishing_dock"
+      ],
+      "markers": false
+    },
+    "developed_with_kitchen": {
+      "label": "취사장 사용안",
+      "buildings": [
+        "workshop",
+        "strategy_tent",
+        "archive",
+        "blacksmith",
+        "alchemy_lab",
+        "storage",
+        "trading_post",
+        "adventurers_guild",
+        "herb_garden",
+        "kitchen",
+        "fishing_dock"
+      ],
+      "markers": false
+    }
+  },
+  "reserved_buildings": [
+    "dungeon_gate"
+  ],
+  "warnings": [
+    "주변 지형과 건물은 원본 이미지 두 장으로부터 왔으므로 생성 단계의 완벽한 픽셀 규격 일치까지 보장되지는 않음",
+    "전송장치와 취사장은 중앙 광장 S10의 대체 배치안이므로 동시에 배치하지 않음",
+    "낚시터의 이미지에 포함됐던 강물은 고정 강 배경을 덮지 않도록 별도 렌더 이미지에서 일부 제거함",
+    "원본 고해상도에서의 위치를 우선 기준으로 삼고 게임 표시 크기로 스케일"
+  ]
+}

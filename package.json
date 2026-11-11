@@ -1,0 +1,20 @@
+{
+  "name": "dot-dungeon",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "play": "vite --mode play --port 5175 --strictPort",
+    "build": "vite build",
+    "build:play": "vite build --mode play",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "galmuri": "2.40.3",
+    "typescript": "^7.0.2",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.7"
+  }
+}
