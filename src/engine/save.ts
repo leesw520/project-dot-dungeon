@@ -92,7 +92,7 @@ export function loadSave(): boolean {
   if (!json) return false;
   try {
     const data = JSON.parse(json);
-    if (typeof data !== "object" || data?.version !== SAVE_VERSION) {
+    if (typeof data !== "object" || data === null || Array.isArray(data) || data.version !== SAVE_VERSION) {
       loadError = "세이브 버전이 맞지 않아 새로 시작했다";
       return false;
     }
@@ -126,6 +126,22 @@ export function exportSave() {
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
+/** 가져오기 직전의 세이브를 한 벌 남겨 두는 칸 (가져온 파일이 잘못됐을 때 되살릴 수 있게) */
+export const SAVE_BACKUP_KEY = `${SAVE_KEY}-backup`;
+
+/** 가져올 세이브 파일의 글을 검사한다. 문제가 있으면 이유를, 없으면 null을 돌려준다. */
+export function checkSaveText(text: string): string | null {
+  let data: unknown;
+  try {
+    data = JSON.parse(text);
+  } catch {
+    return "세이브 파일을 읽을 수 없다";
+  }
+  if (typeof data !== "object" || data === null || Array.isArray(data)) return "세이브 파일 형식이 아니다";
+  if ((data as { version?: unknown }).version !== SAVE_VERSION) return "버전이 다른 세이브 파일이다";
+  return null;
+}
+
 /** 세이브 파일 가져오기: 파일을 골라 검사한 뒤 localStorage에 쓰고 다시 연다. 실패하면 이유를 돌려준다. */
 export function importSave(onError: (msg: string) => void) {
   const input = document.createElement("input");
@@ -135,17 +151,23 @@ export function importSave(onError: (msg: string) => void) {
     const f = input.files?.[0];
     if (!f) return;
     f.text().then((text) => {
-      try {
-        const data = JSON.parse(text);
-        if (data?.version !== SAVE_VERSION) return onError("버전이 다른 세이브 파일이다");
-      } catch {
-        return onError("세이브 파일을 읽을 수 없다");
-      }
+      const problem = checkSaveText(text);
+      if (problem) return onError(problem);
       if (timer) clearTimeout(timer);
+      const wasBlocked = blocked;
       blocked = () => true; // 다시 열기 전에 지금 상태로 덮어쓰지 않게
-      localStorage.setItem(SAVE_KEY, text);
+      try {
+        // 지금 세이브를 한 벌 남긴다 (공간이 모자라 못 남겨도 가져오기는 계속한다)
+        const prev = localStorage.getItem(SAVE_KEY);
+        if (prev) try { localStorage.setItem(SAVE_BACKUP_KEY, prev); } catch { /* 무시 */ }
+        localStorage.setItem(SAVE_KEY, text);
+      } catch {
+        // 저장 공간 부족·차단: 저장을 다시 풀어 주고 알린다 (예전에는 여기서 저장이 막힌 채로 남았다)
+        blocked = wasBlocked;
+        return onError("세이브를 저장할 수 없다 (저장 공간 부족)");
+      }
       location.reload();
-    });
+    }).catch(() => onError("세이브 파일을 읽을 수 없다"));
   };
   input.click();
 }

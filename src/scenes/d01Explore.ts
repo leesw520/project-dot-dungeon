@@ -27,6 +27,7 @@ import { getLastResult, handOverFoundLoot, partyLv } from "../engine/battleResul
 import { districtVisibility, isDoorSeen, isEncountered, markDoorSeen, markEncountered, markVisited } from "../engine/exploreKnowledge";
 import { addItem, loseBag, moveBagToWarehouse, ownedItems } from "../data/inventory";
 import { registerSave } from "../engine/save";
+import { ENEMY_PRESSURE, cellKey as K, enemySymbolRate, inner, mulberry, rollGathers, type Rng } from "../engine/exploreRules";
 import { clearBags } from "./b03Loot";
 import { createFloorMapView, districtTooltip } from "../ui/floorMapView";
 import { createDiscoveryFx, type Discovery } from "./d01Discovery";
@@ -46,24 +47,9 @@ const PANEL_R = 342;
 const NEXT_SLOTS = 3;
 const ENGAGE_MS = 700;
 
-const K = (c: number, r: number) => `${c},${r}`;
 const same = (a: Cell, c: number, r: number) => a[0] === c && a[1] === r;
 
-// ---------- 난수 (원정 시드) ----------
-/** state()는 지금 내부 값 — mulberry(state())로 같은 자리에서 이어 굴린다 (세이브). */
-type Rng = (() => number) & { state: () => number };
-function mulberry(seed: number): Rng {
-  let a = seed >>> 0;
-  const f = (() => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  }) as Rng;
-  f.state = () => a;
-  return f;
-}
+// 난수(mulberry)·연결 칸(inner)·채집지 배치(rollGathers)·적 심볼 비율은 engine/exploreRules.ts
 
 // ---------- 상태 ----------
 /** 타일에 붙은 심볼. idx = 타일 기본 모양(PATH_PIECES.cells)의 칸 번호 — 회전·반전해도 같은 칸을 따라간다. */
@@ -221,36 +207,6 @@ function newExpedition(seed: number): Expedition {
   return ex;
 }
 
-/**
- * 채집지 무작위 배치 (2026-11-08): 구획 견본(def.gathers)의 종류·비율로, 원정 시드마다 다른 자리·개수.
- * 바위·구획 밖·입구/통로/계단 연결 칸·상자·휴식 자리를 피하고, 채집지끼리는 붙지 않게 (8방향 이웃 금지).
- * 같은 원정 안에서는 늘 같은 결과 (세이브를 불러와도 같다).
- */
-function rollGathers(def: DistrictDef, seed: number): GatherPoint[] {
-  if (!def.gathers.length) return [];
-  let h = seed | 0;
-  for (const ch of def.id) h = Math.imul(h ^ ch.charCodeAt(0), 2654435761);
-  const rng = mulberry(h ^ 0x5bd1e995);
-  // 2026-11-08 2차: 개수를 줄였다 (견본 수 × 0.8~1.2) — 대신 한 곳에서 2~3개
-  const [lo, hi] = def.gatherCount ?? [Math.max(2, Math.round(def.gathers.length * 0.8)), Math.max(2, Math.round(def.gathers.length * 1.2))];
-  const want = lo + Math.floor(rng() * (hi - lo + 1));
-  const block = new Set<string>([...def.chests.map((c) => K(...c.cell)), ...def.rests.map((r) => K(...r))]);
-  for (const e of [...def.doors, ...(def.start ? [def.start] : []), ...(def.stairs ? [def.stairs] : [])]) {
-    const [c, r] = inner(e);
-    for (let dc = -1; dc <= 1; dc++) for (let dr = -1; dr <= 1; dr++) block.add(K(c + dc, r + dr));
-  }
-  const free: Cell[] = [];
-  def.shape.forEach((row, r) => [...row].forEach((ch, c) => { if (ch === "." && !block.has(K(c, r))) free.push([c, r]); }));
-  const out: GatherPoint[] = [];
-  const near = (c: number, r: number) => out.some((g) => Math.abs(g.cell[0] - c) <= 1 && Math.abs(g.cell[1] - r) <= 1);
-  while (out.length < want && free.length) {
-    const [c, r] = free.splice(Math.floor(rng() * free.length), 1)[0];
-    if (near(c, r)) continue;
-    out.push({ cell: [c, r], kind: def.gathers[Math.floor(rng() * def.gathers.length)].kind });
-  }
-  return out;
-}
-
 /** 채집지 한 곳에서 얻는 개수 [최소, 최대] · 아이템 심볼 하나에서 얻는 개수 (2026-11-08) */
 const GATHER_YIELD: [number, number] = [2, 3];
 const ITEM_SYMBOL_YIELD = 2;
@@ -300,12 +256,6 @@ function stairsBoss(s: DistrictState): { id: string; cell: Cell } | null {
 /** 이 구획의 계단 보스를 이번 원정에서 쓰러뜨렸는가 */
 function bossBeaten(s: DistrictState): boolean {
   return s.placed.some((p, pi) => p.syms.some((y, si) => y.sym.kind === "enemy" && y.sym.boss && X.beaten.has(`${s.def.id}:${pi}:${si}`)));
-}
-
-/** 출구의 연결 지점 = 바깥 칸에서 구획 쪽으로 한 칸 안 */
-function inner(e: ExitDef): Cell {
-  const [c, r] = e.cell;
-  return e.side === "left" ? [c + 1, r] : e.side === "right" ? [c - 1, r] : e.side === "top" ? [c, r + 1] : [c, r - 1];
 }
 
 const districtDef = (id: string) => FLOOR.districts.find((d) => d.id === id)!;
@@ -360,16 +310,22 @@ const GATHER_GROUP: Partial<Record<GatherKind, "rock" | "wood" | "herb">> = {
   rubble: "rock", crystal: "rock", sand: "rock", tree: "wood", corpse: "wood", web: "wood", bush: "herb", flower: "herb", mushroom: "herb", pool: "herb",
 };
 
-function drawPiece(s: DistrictState): QueuedPiece {
+/** 이번 원정에서 지금까지 놓은 타일 수 (모든 구획) — 적 심볼 비율이 이만큼 오른다 */
+const tilesPlaced = (ex: Expedition) => [...ex.districts.values()].reduce((t, d) => t + d.placed.length, 0);
+
+function drawPiece(s: DistrictState, placedSoFar: number): QueuedPiece {
   const id = weighted(s.rng, DECKS[s.def.deck]);
   const sy = s.def.symbols;
   const syms: PieceSym[] = [];
-  // 공용 [사전 정찰]·[보물찾기]: 적·아이템 심볼 비율 ±%
+  // 공용 [사전 정찰]·[보물찾기]: 적·아이템 심볼 비율 ±%. 적 비율은 놓은 타일 수만큼 오른다 (engine/exploreRules ENEMY_PRESSURE)
   const em = exploreMods();
-  const enemyRate = sy.enemy * Math.max(0, 1 - em.enemyDown / 100), itemRate = sy.item * (1 + em.itemUp / 100);
+  const enemyRate = enemySymbolRate(sy.enemy, placedSoFar, em.enemyDown), itemRate = sy.item * (1 + em.itemUp / 100);
+  let enemies = 0;
   PATH_PIECES[id].cells.forEach((_, idx) => {
     const roll = s.rng();
     if (roll < enemyRate) {
+      if (enemies >= ENEMY_PRESSURE.maxPerTile) return; // 타일 하나에 전투가 몰리지 않게
+      enemies++;
       const { mons, size } = rollGroup(s);
       syms.push({ idx, kind: "enemy", size, mons });
     } else if (roll < enemyRate + itemRate && s.def.gathers.length) {
@@ -379,8 +335,8 @@ function drawPiece(s: DistrictState): QueuedPiece {
   });
   return { id, syms };
 }
-function fillQueue(s: DistrictState) {
-  while (s.queue.length < NEXT_SLOTS + 1) s.queue.push(drawPiece(s));
+function fillQueue(s: DistrictState, ex: Expedition) {
+  while (s.queue.length < NEXT_SLOTS + 1) s.queue.push(drawPiece(s, tilesPlaced(ex)));
 }
 
 function enterDistrict(ex: Expedition, id: string, entry: ExitDef) {
@@ -389,7 +345,7 @@ function enterDistrict(ex: Expedition, id: string, entry: ExitDef) {
     const def = districtDef(id);
     const rng = mulberry(ex.seed ^ (id.length * 7919 + id.charCodeAt(0) * 131));
     const ns: DistrictState = { def, path: new Set(), placed: [], rng, queue: [], foresee: false, gathers: rollGathers(def, ex.seed), gathered: new Set(), rested: new Set(), vis: new Map(), lights: [] };
-    fillQueue(ns);
+    fillQueue(ns, ex);
     ex.districts.set(id, ns);
     s = ns;
   }
@@ -604,7 +560,7 @@ function place(oc: number, or: number) {
   refreshVision(X, s);
 
   s.queue.shift();
-  fillQueue(s);
+  fillQueue(s, X);
   cancelPlacing();
   if (msgs.length) banner(msgs.join(" / "));
   if (UI.discoveries.length) discoveryFx.start(UI.discoveries[0]);
@@ -720,7 +676,7 @@ function useSkill(id: ExploreSkillId) {
   if (busy()) return;
   const s = st();
   if (!(X.uses[id] > 0)) return banner("사용 횟수가 남지 않았다");
-  if (id === "skip") { s.queue.shift(); fillQueue(s); cancelPlacing(); }
+  if (id === "skip") { s.queue.shift(); fillQueue(s, X); cancelPlacing(); }
   else if (id === "swap") { [s.queue[0], s.queue[1]] = [s.queue[1], s.queue[0]]; cancelPlacing(); }
   else if (id === "erase") {
     const i = s.queue[0].syms.findIndex((y) => y.kind === "enemy");
